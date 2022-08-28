@@ -12,19 +12,19 @@ import StoreProvider from "providers/StoreProvider";
 
 ReactDOM.render(
   <React.StrictMode>
-    <StoreProvider>
-      <HelmetProvider>
-        <StrapiPublicProvider>
-          <WalletProviderWrapper>
-            <BrowserRouter>
-              <PerseusThemeProvider>
+    <PerseusThemeProvider>
+      <StoreProvider>
+        <HelmetProvider>
+          <StrapiPublicProvider>
+            <WalletProviderWrapper>
+              <BrowserRouter>
                 <App />
-              </PerseusThemeProvider>
-            </BrowserRouter>
-          </WalletProviderWrapper>
-        </StrapiPublicProvider>
-      </HelmetProvider>
-    </StoreProvider>
+              </BrowserRouter>
+            </WalletProviderWrapper>
+          </StrapiPublicProvider>
+        </HelmetProvider>
+      </StoreProvider>
+    </PerseusThemeProvider>
   </React.StrictMode>,
   document.getElementById("root") as HTMLElement
 );

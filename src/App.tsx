@@ -1,22 +1,14 @@
 import { Route, Routes, useLocation } from "react-router";
-import AboutUsPage from "./pages/AboutUsPage";
 import HomePage from "./pages/HomePage";
-import NftsPage from "./pages/NftsPage";
-import PortfolioPage from "./pages/PortfolioPage";
-import RoadmapPage from "./pages/RoadmapPage";
-import TokenPage from "./pages/TokenPage";
-import Header from "components/Layout/Header";
-import SeoComp from "components/Reusable/Seo";
-import { useContext, useEffect } from "react";
-import { StrapiContext } from "providers/StrapiPublicProvider";
-import Footer from "components/Layout/Footer";
-import LuanchpadPageInner from "components/MintP/LuanchpadPageInner";
 import SnackbarProvider from "providers/SnackbarProvider";
 import BlockingSnabarsProvider from "providers/BlockingSnabarsProvider";
+import PageWithNavWrapper from "components/Reusable/Layout/PageWithNavWrapper";
+import { useContext, useEffect } from "react";
+import { StrapiContext } from "providers/StrapiPublicProvider";
+import SeoComp from "components/Reusable/Seo";
 
 const App: React.FC = () => {
   const { seo } = useContext(StrapiContext);
-
   const { pathname } = useLocation();
 
   useEffect(() => {
@@ -25,13 +17,13 @@ const App: React.FC = () => {
 
   return (
     <>
-      <Header />
-      <SeoComp seo={seo} />
-      <Routes>
-        <Route element={<HomePage />} index />
-        <Route element={<NftsPage />} path="/nfts" />
-      </Routes>
-      <Footer />
+      <PageWithNavWrapper>
+        <SeoComp seo={seo} />
+        <Routes>
+          <Route element={<HomePage />} index />
+        </Routes>
+      </PageWithNavWrapper>
+
       <SnackbarProvider />
       <BlockingSnabarsProvider />
     </>

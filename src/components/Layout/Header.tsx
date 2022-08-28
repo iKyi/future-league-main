@@ -115,7 +115,7 @@ const Header: React.FC<HeaderPropsType> = () => {
           <CardActionArea component={NavLink} to="/" sx={{ width: "auto" }}>
             <img
               src={strapiLogo ? getStrapiMedia(strapiLogo) : Logo}
-              alt="Perseus logo"
+              alt="Future Sports League logo"
               style={{
                 width: "100%",
                 height: "auto",

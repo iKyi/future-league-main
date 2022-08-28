@@ -7,14 +7,18 @@ import {
 import { Theme, ThemeProvider } from "@mui/system";
 import React, { createContext, ReactNode, useMemo, useState } from "react";
 import { PerseusColorsGetter } from "./pallette";
+import PrimaryFslButton from "assets/images/buttons/primary.png";
+import InfoFslButton from "assets/images/buttons/info.png";
 
 export enum FONTS {
   LATO = "Lato, sans-serif, Segoe UI, Tahoma, Geneva, Verdana, sans-serif",
-  POPPINS = "Poppins, sans-serif, Segoe UI, Tahoma, Geneva, Verdana, sans-serif",
+  MOKOTO = "MokotoMark2, sans-serif, Segoe UI, Tahoma, Geneva, Verdana, sans-serif",
 }
 
 declare module "@mui/material/Button" {
-  interface ButtonPropsVariantOverrides {}
+  interface ButtonPropsVariantOverrides {
+    fsl: true;
+  }
 }
 
 let ImmortalMuITheme = createTheme({
@@ -107,6 +111,42 @@ const getOverRides = (theme: Theme) => {
             props: { variant: "outlined", color: "secondary" },
             style: {
               color: theme.palette.primary.contrastText,
+            },
+          },
+          {
+            props: { variant: "fsl", color: "primary" },
+            style: {
+              fontWeight: 400,
+              fontFamily: FONTS.MOKOTO,
+              background: `url('${PrimaryFslButton}')`,
+              backgroundSize: "100% 100%",
+              color: "#fff",
+              backgroundRepeat: "no-repeat",
+              padding: "20px 25px 20px 25px",
+              width: "240px",
+              maxWidth: "100%",
+
+              "&:hover": {
+                color: "rgba(176, 72, 253, 1)",
+              },
+            },
+          },
+          {
+            props: { variant: "fsl", color: "info" },
+            style: {
+              padding: "20px 25px 20px 25px",
+              width: "240px",
+              maxWidth: "100%",
+              fontWeight: 400,
+              background: `url('${InfoFslButton}')`,
+              fontFamily: FONTS.MOKOTO,
+              color: "#fff",
+              backgroundSize: "100% 100%",
+              backgroundRepeat: "no-repeat",
+
+              "&:hover": {
+                color: "rgba(255, 182, 41, 1)",
+              },
             },
           },
           // {

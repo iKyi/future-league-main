@@ -1,40 +1,84 @@
-import { Container } from "@mui/material";
-import AppBox from "components/Home/AppBox/AppBox";
-import HomeIntroBox from "components/Home/HomeIntroBox/HomeIntroBox";
-import MilestonesHome from "components/Home/MilestonesHome/MilestonesHome";
-import NftsBox from "components/Home/NftsBox/NftsBox";
-import ContactBox from "components/Reusable/ContactBox";
-import TopFillerBox from "components/Reusable/TopFillerBox";
+import { Box } from "@mui/material";
+import HomeAboutUsBox from "components/Home/HomeAboutUsBox";
+import HomeGamesPrizesBox from "components/Home/HomeGamesPrizesBox";
+import HomeIntroBox from "components/Home/HomeIntroBox";
+import HomeMeetCommunityBox from "components/Home/HomeMeetCommunityBox";
 import usePageData from "hooks/usePageData";
-import ISectionHeaderStrapi from "utils/types/ISectionHeader";
+// import { Container } from "@mui/material";
+// import ContactBox from "components/Reusable/ContactBox";
+// import usePageData from "hooks/usePageData";
+// import ISectionHeaderStrapi from "utils/types/ISectionHeader";
 
 export type HomePagePropsType = {};
 
 const HomePage: React.FC<HomePagePropsType> = () => {
-  const { SeoComponent, pageData } = usePageData("home-page");
+  const { pageData } = usePageData("landing-data");
 
   const {
-    contactBoxHeader,
-    milestonesBoxHeader,
-    introBoxText,
-    tokenSectionText,
-  } = pageData || {};
+    introBoxPretitle,
+    introboxTitle,
+    introboxSubtitle,
+    aboutUsPretitle,
+    aboutUsTitle,
+    aboutUsSubtitle,
+    gamesPrizesPretitle,
+    gamesPrizesTitle,
+    gamesPrizesSubtitle,
+    meetCommunityPretitle,
+    meetCommunityTitle,
+    meetCommunitySubtitle,
+    introBoxBackground,
+    introBoxLeftButton,
+    introBoxRightButton,
+    whitepaperBoxButton,
+    whitepaperBoxTitle,
+    whitepapaerBoxText,
+    whitepaperBoxImage,
+  } = pageData ?? {};
 
   // *************** RENDER *************** //
   return (
-    <>
-      {SeoComponent}
-      <TopFillerBox />
+    <Box
+      sx={{
+        bgcolor: "common.black",
+      }}
+    >
       <HomeIntroBox
-        introBoxText={introBoxText}
-        tokenSectionText={tokenSectionText}
+        sectionTitle={{
+          pretitle: introBoxPretitle,
+          subtitle: introboxSubtitle,
+          title: introboxTitle,
+        }}
+        bgImage={introBoxBackground}
+        introBoxRightButton={introBoxRightButton}
+        introBoxLeftButton={introBoxLeftButton}
       />
-      <NftsBox />
-      {milestonesBoxHeader && (
-        <MilestonesHome header={milestonesBoxHeader as ISectionHeaderStrapi} />
-      )}
-      <AppBox />
-      {contactBoxHeader && (
+      <HomeAboutUsBox
+        sectionTitle={{
+          pretitle: aboutUsPretitle,
+          subtitle: aboutUsSubtitle,
+          title: aboutUsTitle,
+        }}
+        whitepaperBoxButton={whitepaperBoxButton}
+        whitepaperBoxTitle={whitepaperBoxTitle}
+        whitepapaerBoxText={whitepapaerBoxText}
+        whitepaperBoxImage={whitepaperBoxImage}
+      />
+      <HomeGamesPrizesBox
+        sectionTitle={{
+          pretitle: gamesPrizesPretitle,
+          subtitle: gamesPrizesSubtitle,
+          title: gamesPrizesTitle,
+        }}
+      />
+      <HomeMeetCommunityBox
+        sectionTitle={{
+          pretitle: meetCommunityPretitle,
+          subtitle: meetCommunitySubtitle,
+          title: meetCommunityTitle,
+        }}
+      />
+      {/* {contactBoxHeader && (
         <Container
           sx={{
             pt: [3, 3, 7],
@@ -42,8 +86,8 @@ const HomePage: React.FC<HomePagePropsType> = () => {
         >
           <ContactBox header={contactBoxHeader as ISectionHeaderStrapi} />
         </Container>
-      )}
-    </>
+      )} */}
+    </Box>
   );
 };
 

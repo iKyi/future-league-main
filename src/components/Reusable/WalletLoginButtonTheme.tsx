@@ -21,7 +21,7 @@ const StyledLoginButton = styled(WalletMultiButton, {
     padding: "12px",
     fontWeight: 400,
     textTransform: "uppercase",
-    fontFamily: FONTS.POPPINS,
+    fontFamily: `${FONTS.LATO} !important`,
     height: "34px",
     lineHeight: 1,
     borderRadius: 6,

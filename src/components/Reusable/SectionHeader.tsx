@@ -1,7 +1,10 @@
 import { Typography, SxProps } from "@mui/material";
 import { Box } from "@mui/system";
+import { FONTS } from "lib/theme";
 import { ReactNode } from "react";
 import MarkdownParser from "./MarkdownParser";
+import sectionTitleLeft from "assets/images/sectionTitle/sectionTitleLeft.png";
+import sectionTitleRight from "assets/images/sectionTitle/sectionTitleRight.png";
 
 export type SectionHeaderPropsType = {
   preTitle?: string;
@@ -9,6 +12,7 @@ export type SectionHeaderPropsType = {
   sx?: SxProps;
   description?: string;
   children?: ReactNode;
+  disableHeaderBars?: boolean;
 };
 
 const SectionHeader: React.FC<SectionHeaderPropsType> = ({
@@ -17,6 +21,7 @@ const SectionHeader: React.FC<SectionHeaderPropsType> = ({
   sx,
   description,
   children,
+  disableHeaderBars,
 }) => {
   // *************** RENDER *************** //
   return (
@@ -27,48 +32,94 @@ const SectionHeader: React.FC<SectionHeaderPropsType> = ({
         ...sx,
       }}
     >
-      <Typography
-        component="span"
-        sx={{
-          color: "common.gray",
-          fontSize: [12, 12, 14],
-          fontWeight: 400,
-          lineHeight: "17px",
-          letterSpacing: "5px",
-          m: 0,
-        }}
-      >
-        {!preTitle || preTitle.length === 0 ? "PERSEUS" : preTitle}
-      </Typography>
-      {title && (
+      {preTitle && preTitle.length > 0 && (
         <Typography
-          variant="h3"
+          component="span"
           sx={{
-            fontWeight: 600,
-            fontSize: [26, 26, 40],
-            mt: [0.85, 0.85, 1.8],
-            mb: [1.5, 1.5, 2],
+            color: "common.gray",
+            fontSize: [10, 12, 12],
+            fontWeight: 300,
+            lineHeight: "17px",
+            letterSpacing: "5px",
+            m: 0,
+            textTransform: "uppercase",
           }}
         >
-          {title}
+          {preTitle}
         </Typography>
+      )}
+
+      {title && (
+        <Box
+          sx={{
+            display: "flex",
+          }}
+        >
+          {!disableHeaderBars && (
+            <Box
+              sx={{
+                background: `url('${sectionTitleLeft}')`,
+                backgroundSize: "100% auto",
+                backgroundPosition: "center center",
+                backgroundRepeat: "no-repeat",
+                flex: 1,
+                minHeight: "60px",
+              }}
+            />
+          )}
+
+          <Typography
+            variant="h3"
+            sx={{
+              fontSize: [26, 26, 40],
+              mt: [0.85, 0.85, 1.8],
+              mb: [1.5, 1.5, 2],
+              fontFamily: FONTS.MOKOTO,
+              flex: 1,
+              flexBasis: "fit-content",
+            }}
+          >
+            <MarkdownParser>{title}</MarkdownParser>
+          </Typography>
+          {!disableHeaderBars && (
+            <Box
+              sx={{
+                background: `url('${sectionTitleRight}')`,
+                backgroundSize: "100% auto",
+                backgroundPosition: "center center",
+                backgroundRepeat: "no-repeat",
+                flex: 1,
+                minHeight: "60px",
+              }}
+            />
+          )}
+        </Box>
       )}
 
       {children && <Box>{children}</Box>}
       {description && (
-        <Typography
-          component="span"
+        <Box
           sx={{
-            fontWeight: 300,
-            fontSize: 16,
-            lineHeight: "24px",
-            letterSpacing: 0.5,
-            color: "common.lightGray",
-            m: 0,
+            display: "flex",
+            justifyContent: "center",
           }}
         >
-          <MarkdownParser>{description}</MarkdownParser>
-        </Typography>
+          <Typography
+            component="div"
+            sx={{
+              fontWeight: 300,
+              fontSize: 16,
+              lineHeight: "24px",
+              letterSpacing: 0.5,
+              color: "common.lightGray",
+              m: 0,
+              width: 600,
+              maxWidth: "100%",
+            }}
+          >
+            <MarkdownParser>{description}</MarkdownParser>
+          </Typography>
+        </Box>
       )}
     </Box>
   );

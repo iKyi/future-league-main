@@ -1,4 +1,4 @@
-import { IconButton, Stack, Link, Theme, SxProps } from "@mui/material";
+import { IconButton, Stack, Link, Theme, SxProps, Box } from "@mui/material";
 import { Twitter, LinkedIn, Facebook } from "@mui/icons-material";
 import DiscordIcon from "components/Icons/DiscordIcon";
 
@@ -17,15 +17,37 @@ const SocialIconButton: React.FC<{
         color: "secondary.contrastText",
         borderRadius: 0,
         transition: "all .2s",
+        border: "1px solid",
+        backgroundColor: "colors.black",
+        padding: 2,
+        transform: "rotate(45deg)",
+        borderImageSlice: 1,
+        borderImageSource:
+          "linear-gradient(123.49deg, #fff 8.63%, #fff 25.73%, #fff 42.83%, #fff 62.96%)",
         "&:hover": {
-          borderColor: "secondary.main",
-          color: "secondary.main",
+          border: "1px solid",
+          borderImageSlice: 1,
+          borderImageSource:
+            "linear-gradient(123.49deg, #B048FD 8.63%, #6216D2 25.73%, #3E4ECC 42.83%, #3E75D5 62.96%)",
+          color: "primary.main",
         },
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
       }}
       target="_blank"
       rel="noopener"
     >
-      {children}
+      <Box
+        sx={{
+          transform: "rotate(-45deg)",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
+        {children}
+      </Box>
     </IconButton>
   );
 };
@@ -49,8 +71,9 @@ const SocialList: React.VFC<SocialListPropsType> = ({
   return (
     <Stack
       direction="row"
-      spacing={1}
+      spacing={2.5}
       sx={{
+        mx: 2,
         display: "inline-flex",
         ...importedSx,
       }}

@@ -10,11 +10,11 @@ const getDesignTokens = (mode: PaletteMode) => ({
       : ({
           // palette values for dark mode
           primary: {
-            main: "rgba(155, 81, 224, 1)",
-            contrastText: "#ffffff",
+            main: "rgba(1, 246, 246, 1)",
+            contrastText: "#080404",
           },
           secondary: {
-            main: "rgba(48, 129, 237, 1)",
+            main: "rgba(176, 72, 253, 1)",
             contrastText: "rgba(255,255,255,0.87)",
           },
           info: {
@@ -27,7 +27,7 @@ const getDesignTokens = (mode: PaletteMode) => ({
             main: "#EB1545",
           },
           background: {
-            default: "rgba(9, 9, 9, 1)",
+            default: "rgba(15, 15, 20, 1)",
             paper: "rgba(9, 9, 9, 1)",
           },
           divider: "rgba(226,226,226,0.2)",
