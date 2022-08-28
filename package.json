@@ -83,8 +83,8 @@
     "dev": "dotenv -e .env.dev react-app-rewired start",
     "start": "dotenv -e .env.dev react-app-rewired start",
     "dev:live": "react-app-rewired start",
-    "build": "dotenv -e .env.dev react-app-rewired build",
-    "build:live": "react-app-rewired build",
+    "build": "react-app-rewired build",
+    "build:live": "dotenv -e .env.live react-app-rewired build",
     "test": "react-app-rewired test",
     "lint": "eslint --ext .ts --ext .tsx ."
   },
