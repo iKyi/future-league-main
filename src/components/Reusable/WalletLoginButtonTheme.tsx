@@ -4,6 +4,7 @@ import { useWallet } from "@solana/wallet-adapter-react";
 import { WalletMultiButton } from "@solana/wallet-adapter-react-ui";
 import { FONTS } from "lib/theme";
 import { CSSProperties } from "react";
+import lightBlueFslButton from "assets/images/buttons/lightBlue.png";
 
 export type WalletLoginButtonThemePropsType = {
   propStyles?: CSSProperties;
@@ -14,19 +15,17 @@ const StyledLoginButton = styled(WalletMultiButton, {
   slot: "Root",
 })<WalletLoginButtonThemePropsType & { connected: boolean }>(
   ({ theme, propStyles, connected }) => ({
-    border: connected
-      ? `1px solid ${(theme.palette.common as any).gray}`
-      : `1px solid ${theme.palette.common.white}`,
-    backgroundColor: `rgba(0,0,0,0.16)`,
-    padding: "12px",
-    fontWeight: 400,
-    textTransform: "uppercase",
-    fontFamily: `${FONTS.LATO} !important`,
     height: "34px",
     lineHeight: 1,
     borderRadius: 6,
-    color: (theme.palette.common as any).white,
     display: "inline-flex",
+    fontWeight: 400,
+    fontFamily: FONTS.LATO,
+    background: `url('${lightBlueFslButton}')`,
+    backgroundSize: "100% 100%",
+    color: "#fff",
+    backgroundRepeat: "no-repeat",
+    padding: "20px 25px 20px 25px",
     ".wallet-adapter-button-start-icon": {
       width: 16,
       height: 16,

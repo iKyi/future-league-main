@@ -29,6 +29,7 @@ const SectionHeader: React.FC<SectionHeaderPropsType> = ({
       sx={{
         textAlign: "center",
         mb: [4, 4, 7],
+        px: [2, 2, 6],
         ...sx,
       }}
     >
@@ -53,6 +54,8 @@ const SectionHeader: React.FC<SectionHeaderPropsType> = ({
         <Box
           sx={{
             display: "flex",
+            textAlign: "center",
+            justifyContent: "center",
           }}
         >
           {!disableHeaderBars && (
@@ -75,8 +78,7 @@ const SectionHeader: React.FC<SectionHeaderPropsType> = ({
               mt: [0.85, 0.85, 1.8],
               mb: [1.5, 1.5, 2],
               fontFamily: FONTS.MOKOTO,
-              flex: 1,
-              flexBasis: "fit-content",
+              px: 3,
             }}
           >
             <MarkdownParser>{title}</MarkdownParser>
@@ -100,6 +102,7 @@ const SectionHeader: React.FC<SectionHeaderPropsType> = ({
       {description && (
         <Box
           sx={{
+            mt: 2,
             display: "flex",
             justifyContent: "center",
           }}
@@ -108,8 +111,8 @@ const SectionHeader: React.FC<SectionHeaderPropsType> = ({
             component="div"
             sx={{
               fontWeight: 300,
-              fontSize: 16,
-              lineHeight: "24px",
+              fontSize: 14,
+              lineHeight: "22px",
               letterSpacing: 0.5,
               color: "common.lightGray",
               m: 0,

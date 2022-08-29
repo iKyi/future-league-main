@@ -19,7 +19,7 @@ const SocialIconButton: React.FC<{
         transition: "all .2s",
         border: "1px solid",
         backgroundColor: "colors.black",
-        padding: 2,
+        padding: [1, 1, 2],
         transform: "rotate(45deg)",
         borderImageSlice: 1,
         borderImageSource:
@@ -73,7 +73,7 @@ const SocialList: React.VFC<SocialListPropsType> = ({
       direction="row"
       spacing={2.5}
       sx={{
-        mx: 2,
+        mx: [1, 1, 2],
         display: "inline-flex",
         ...importedSx,
       }}

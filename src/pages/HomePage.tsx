@@ -34,6 +34,11 @@ const HomePage: React.FC<HomePagePropsType> = () => {
     whitepaperBoxTitle,
     whitepapaerBoxText,
     whitepaperBoxImage,
+    meetOurCommunityButton,
+    meetCommunityImage,
+    gamesImage,
+    gamesPrizesImageTitle,
+    gamesPrizesImageSubtitle,
   } = pageData ?? {};
 
   // *************** RENDER *************** //
@@ -70,6 +75,9 @@ const HomePage: React.FC<HomePagePropsType> = () => {
           subtitle: gamesPrizesSubtitle,
           title: gamesPrizesTitle,
         }}
+        gamesImage={gamesImage}
+        gamesPrizesImageTitle={gamesPrizesImageTitle}
+        gamesPrizesImageSubtitle={gamesPrizesImageSubtitle}
       />
       <HomeMeetCommunityBox
         sectionTitle={{
@@ -77,6 +85,8 @@ const HomePage: React.FC<HomePagePropsType> = () => {
           subtitle: meetCommunitySubtitle,
           title: meetCommunityTitle,
         }}
+        meetOurCommunityButton={meetOurCommunityButton}
+        meetCommunityImage={meetCommunityImage}
       />
       {/* {contactBoxHeader && (
         <Container

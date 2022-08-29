@@ -22,7 +22,7 @@ export type IntroDataTablePropsType = {
 const textGradient: SxProps<Theme> = {
   color: "#fff",
   fontFamily: FONTS.MOKOTO,
-  fontSize: 18,
+  fontSize: [14, 14, 18],
 };
 
 const IntroDataTable: React.FC<IntroDataTablePropsType> = ({ children }) => {
@@ -40,8 +40,7 @@ const IntroDataTable: React.FC<IntroDataTablePropsType> = ({ children }) => {
     >
       <Box
         sx={{
-          width: "500px",
-          minWidth: "500px",
+          minWidth: [0, 0, "500px"],
         }}
       >
         <Box
@@ -53,7 +52,7 @@ const IntroDataTable: React.FC<IntroDataTablePropsType> = ({ children }) => {
             borderRadius: "6px",
             position: "relative",
             margin: "5px 0",
-            p: 3,
+            p: [1, 1, 3],
             backgroundColor: `rgba(0,0,0,0.65)`,
           }}
         >
@@ -73,7 +72,7 @@ const IntroDataTable: React.FC<IntroDataTablePropsType> = ({ children }) => {
                 tr: {
                   td: {
                     borderBottomColor: "common.gray",
-                    py: 2,
+                    py: [1, 1, 2],
                   },
                 },
               }}

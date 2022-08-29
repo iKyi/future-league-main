@@ -13,6 +13,7 @@ import InfoFslButton from "assets/images/buttons/info.png";
 export enum FONTS {
   LATO = "Lato, sans-serif, Segoe UI, Tahoma, Geneva, Verdana, sans-serif",
   MOKOTO = "MokotoMark2, sans-serif, Segoe UI, Tahoma, Geneva, Verdana, sans-serif",
+  MOKOTOONE = "Mokoto, sans-serif, Segoe UI, Tahoma, Geneva, Verdana, sans-serif",
 }
 
 declare module "@mui/material/Button" {

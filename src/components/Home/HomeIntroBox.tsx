@@ -33,6 +33,8 @@ const HomeIntroBox: React.FC<HomeIntroBoxPropsType> = ({
         background: `url('${image}')`,
         backgroundSize: "cover",
         backgroundPosition: "center center",
+        maxWidth: "100%",
+        overflow: "hidden",
       }}
     >
       <ResponsiveSpace />

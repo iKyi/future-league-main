@@ -39,6 +39,11 @@
   src: url("assets/fonts/mokoto/Mokoto Glitch Mark.ttf");
 }
 
+@font-face {
+  font-family: "Mokoto";
+  src: url("assets/fonts/mokoto/Mokoto Glitch Mark 2.ttf");
+}
+
 .respImg {
   width: 100%;
   height: auto;
