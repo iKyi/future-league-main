@@ -6,14 +6,20 @@ import PageWithNavWrapper from "components/Reusable/Layout/PageWithNavWrapper";
 import { useContext, useEffect } from "react";
 import { StrapiContext } from "providers/StrapiPublicProvider";
 import SeoComp from "components/Reusable/Seo";
+import { useWallet } from "@solana/wallet-adapter-react";
 
 const App: React.FC = () => {
+  const { publicKey } = useWallet();
   const { seo } = useContext(StrapiContext);
   const { pathname } = useLocation();
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   }, [pathname]);
+
+  useEffect(() => {
+    console.log(publicKey?.toString());
+  }, [publicKey]);
 
   return (
     <>

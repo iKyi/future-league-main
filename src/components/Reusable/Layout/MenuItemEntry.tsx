@@ -5,6 +5,8 @@ export type MenuItemEntryPropsType = {
   active?: boolean;
   url?: string;
   icon: VFC<SvgIconProps<"svg", {}>>;
+  tooltip?: string;
+  allDisabled?: boolean;
 };
 
 const MenuItemEntry: React.FC<MenuItemEntryPropsType> = ({

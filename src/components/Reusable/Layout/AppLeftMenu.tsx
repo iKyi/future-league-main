@@ -1,35 +1,57 @@
-import { Box, Link, List, ListItem, ListItemIcon } from "@mui/material";
+import {
+  Box,
+  Link,
+  List,
+  ListItem,
+  ListItemIcon,
+  Tooltip,
+} from "@mui/material";
 import DiamondIcon from "components/Icons/DiamondIcon";
 import HomeIcon from "components/Icons/HomeIcon";
 import JoystickIcon from "components/Icons/JoystickIcon";
 import PersonIcon from "components/Icons/PersonIcon";
+import usePageData from "hooks/usePageData";
+import { Fragment } from "react";
 import { centerFlex } from "utils/sxUtils";
 import { MenuItemEntryPropsType } from "./MenuItemEntry";
-
-export const LeftMenuItems: MenuItemEntryPropsType[] = [
-  {
-    icon: HomeIcon,
-    url: "/",
-    active: true,
-  },
-  {
-    icon: PersonIcon,
-    url: "https://google.com",
-  },
-  {
-    icon: JoystickIcon,
-    url: "https://google.com",
-  },
-  {
-    icon: DiamondIcon,
-    url: "https://google.com",
-  },
-];
 
 export type AppLeftMenuPropsType = {};
 
 const AppLeftMenu: React.VFC<AppLeftMenuPropsType> = () => {
+  const { pageData } = usePageData("all-global");
+  const { landingMenuLink, gamesMenuLink, mintMenuLink, stakingMenuLink } =
+    pageData ?? {};
+
+  const LeftMenuItems: MenuItemEntryPropsType[] = [
+    {
+      icon: HomeIcon,
+      url: landingMenuLink?.url ?? "/",
+      active: true,
+      tooltip: landingMenuLink?.tooltipText ?? null,
+      allDisabled: landingMenuLink?.allDisabled ?? false,
+    },
+    {
+      icon: PersonIcon,
+      url: stakingMenuLink?.url ?? "/",
+      tooltip: stakingMenuLink?.tooltipText ?? null,
+      allDisabled: stakingMenuLink?.allDisabled ?? false,
+    },
+    {
+      icon: JoystickIcon,
+      url: gamesMenuLink?.url ?? "/",
+      tooltip: gamesMenuLink?.tooltipText ?? null,
+      allDisabled: gamesMenuLink?.allDisabled ?? false,
+    },
+    {
+      icon: DiamondIcon,
+      url: mintMenuLink?.url ?? "/",
+      tooltip: mintMenuLink?.tooltipText ?? null,
+      allDisabled: mintMenuLink?.allDisabled ?? false,
+    },
+  ];
+
   // *************** RENDER *************** //
+  if (!pageData) return null;
   return (
     <Box>
       <List
@@ -41,13 +63,13 @@ const AppLeftMenu: React.VFC<AppLeftMenuPropsType> = () => {
         }}
       >
         {LeftMenuItems.map((item, index: number) => {
-          return (
+          const { allDisabled } = item;
+          const Element = (
             <ListItem
-              key={index}
               button
               component={Link}
               href={item.url}
-              disabled={item.active}
+              disabled={item.active || allDisabled}
               target="_blank"
               rel="noopener"
               sx={{
@@ -81,6 +103,16 @@ const AppLeftMenu: React.VFC<AppLeftMenuPropsType> = () => {
               </ListItemIcon>
             </ListItem>
           );
+
+          if (item.tooltip) {
+            return (
+              <Tooltip title={item.tooltip} placement="right" key={index}>
+                <Box>{Element}</Box>
+              </Tooltip>
+            );
+          } else {
+            return <Fragment key={index}>Element</Fragment>;
+          }
         })}
       </List>
     </Box>
