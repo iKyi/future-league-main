@@ -3,6 +3,8 @@ import StrapiLinkButton from "components/Reusable/StrapiLinkButton";
 import { Box } from "@mui/material";
 import ResponsiveSpace from "components/Reusable/ResponsiveSpace";
 import { getStrapiMedia } from "lib/theme/media";
+import { StrapiContext } from "providers/StrapiPublicProvider";
+import { useContext } from "react";
 
 export type HomeMeetCommunityBoxPropsType = {
   children?: any;
@@ -16,11 +18,14 @@ export type HomeMeetCommunityBoxPropsType = {
 };
 
 const HomeMeetCommunityBox: React.FC<HomeMeetCommunityBoxPropsType> = ({
-  children,
   sectionTitle,
   meetOurCommunityButton,
   meetCommunityImage,
 }) => {
+  const GlobalData = useContext(StrapiContext);
+  const { socialLinks } = GlobalData ?? {};
+  const discordUrl =
+    socialLinks?.find((item: any) => item.name === "discord")?.url ?? null;
   // *************** RENDER *************** //
   return (
     <Box
@@ -43,7 +48,7 @@ const HomeMeetCommunityBox: React.FC<HomeMeetCommunityBoxPropsType> = ({
         }}
       >
         {meetOurCommunityButton && (
-          <StrapiLinkButton {...meetOurCommunityButton} />
+          <StrapiLinkButton {...meetOurCommunityButton} url={discordUrl} />
         )}
       </Box>
       <ResponsiveSpace />

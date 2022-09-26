@@ -4,6 +4,7 @@ import { Box, Grid } from "@mui/material";
 import { getStrapiMedia } from "lib/theme/media";
 import IntroDataTable from "./HomeIntroBoxComponents/IntroDataTable";
 import StrapiLinkButton from "components/Reusable/StrapiLinkButton";
+import { useAppSelector } from "app/hooks";
 
 export type HomeIntroBoxPropsType = {
   children?: any;
@@ -24,6 +25,9 @@ const HomeIntroBox: React.FC<HomeIntroBoxPropsType> = ({
   introBoxLeftButton,
   introBoxRightButton,
 }) => {
+  const pagesData =
+    useAppSelector((state) => state.global.publicSiteData) ?? {};
+  const gamesUrl = pagesData?.gamesMenuLink?.url ?? undefined;
   const image = getStrapiMedia(bgImage);
 
   // *************** RENDER *************** //
@@ -58,7 +62,7 @@ const HomeIntroBox: React.FC<HomeIntroBoxPropsType> = ({
           )}
           {introBoxRightButton && (
             <Grid item>
-              <StrapiLinkButton {...introBoxRightButton} />
+              <StrapiLinkButton {...introBoxRightButton} url={gamesUrl} />
             </Grid>
           )}
         </Grid>

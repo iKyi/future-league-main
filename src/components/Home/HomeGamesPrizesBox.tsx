@@ -2,7 +2,8 @@ import SectionHeader from "components/Reusable/SectionHeader";
 import { getStrapiMedia } from "lib/theme/media";
 import { Box, Link, Button } from "@mui/material";
 import { FONTS } from "lib/theme";
-import { useAppSelector } from "app/hooks";
+import { useContext } from "react";
+import { StrapiContext } from "providers/StrapiPublicProvider";
 
 export type HomeGamesPrizesBoxPropsType = {
   children?: any;
@@ -24,8 +25,9 @@ const HomeGamesPrizesBox: React.FC<HomeGamesPrizesBoxPropsType> = ({
   gamesPrizesImageSubtitle,
 }) => {
   const imageUrl = getStrapiMedia(gamesImage);
-  const publicData = useAppSelector((state) => state.global.publicSiteData);
-  const gamesUrl = publicData?.gamesSiteUrl ?? null;
+  const GlobalData = useContext(StrapiContext);
+  const gamesUrl = GlobalData?.gamesMenuLink?.url ?? null;
+
   // *************** RENDER *************** //
   return (
     <>
@@ -71,12 +73,12 @@ const HomeGamesPrizesBox: React.FC<HomeGamesPrizesBoxPropsType> = ({
               <Button
                 variant="fsl"
                 component={Link}
-                color="info"
+                color="primary"
                 href={gamesUrl}
                 target="_blank"
                 rel="noopener"
               >
-                SEE ALL
+                PLAY DEMO
               </Button>
             </Box>
           )}

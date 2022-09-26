@@ -43,11 +43,7 @@ const HomePage: React.FC<HomePagePropsType> = () => {
 
   // *************** RENDER *************** //
   return (
-    <Box
-      sx={{
-        bgcolor: "common.black",
-      }}
-    >
+    <Box>
       <HomeIntroBox
         sectionTitle={{
           pretitle: introBoxPretitle,

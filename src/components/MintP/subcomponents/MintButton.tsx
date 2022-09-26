@@ -18,7 +18,7 @@ export const CTAButton = styled(Button)(({ theme }) => ({
   minHeight: "40px",
   marginTop: "10px",
   marginBottom: " 5px",
-  backgroundColor: "#000",
+  backgroundColor: "rgba(0, 5, 11, 1)",
   color: theme.palette.error.main,
   border: `1px solid ${theme.palette.error.main}`,
   fontSize: "16px",

@@ -10,6 +10,8 @@ import usePageData from "hooks/usePageData";
 import aboutUsDetailsBg from "assets/images/backgrounds/aboutUsDetailsBg.png";
 import aboutUsWhitepaperBg from "assets/images/backgrounds/aboutUsWhitepaperBg.png";
 import HomeNFTTabs from "./HomeIntroBoxComponents/HomeNFTTabs";
+import { StrapiContext } from "providers/StrapiPublicProvider";
+import { useContext } from "react";
 export type HomeAboutUsBoxPropsType = {
   children?: any;
   sectionTitle: {
@@ -24,19 +26,19 @@ export type HomeAboutUsBoxPropsType = {
 };
 
 const HomeAboutUsBox: React.FC<HomeAboutUsBoxPropsType> = ({
-  children,
   sectionTitle,
   whitepaperBoxButton,
   whitepaperBoxTitle,
   whitepapaerBoxText,
   whitepaperBoxImage,
 }) => {
+  const GlobalData = useContext(StrapiContext);
   const imageUrl = getStrapiMedia(whitepaperBoxImage);
   const { pageData: aboutUsInfos } = usePageData("about-us-infos", true);
+  const { whitepaperUrl } = GlobalData ?? {};
   // *************** RENDER *************** //
   return (
     <Box>
-      <ResponsiveSpace />
       <SectionHeader
         preTitle={sectionTitle?.pretitle}
         description={sectionTitle?.subtitle}
@@ -108,7 +110,11 @@ const HomeAboutUsBox: React.FC<HomeAboutUsBoxPropsType> = ({
                   </Box>
                 )}
                 {whitepaperBoxButton && (
-                  <StrapiLinkButton {...whitepaperBoxButton} />
+                  <StrapiLinkButton
+                    {...whitepaperBoxButton}
+                    url={whitepaperUrl}
+                    link="external"
+                  />
                 )}
               </Box>
             </Grid>
