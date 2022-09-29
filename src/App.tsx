@@ -7,6 +7,7 @@ import { useContext, useEffect } from "react";
 import { StrapiContext } from "providers/StrapiPublicProvider";
 import SeoComp from "components/Reusable/Seo";
 import { useWallet } from "@solana/wallet-adapter-react";
+import FourOhFourComp from "components/FourOhFour/FourOhFourComp";
 
 const App: React.FC = () => {
   const { publicKey } = useWallet();
@@ -27,6 +28,7 @@ const App: React.FC = () => {
         <SeoComp seo={seo} />
         <Routes>
           <Route element={<HomePage />} index />
+          <Route path="*" element={<FourOhFourComp />} />
         </Routes>
       </PageWithNavWrapper>
 
